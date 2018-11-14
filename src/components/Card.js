@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { Colors, Size } from '../constants';
 
 const Card = ({ children }) => {
     const { cardStyle } = styles;
@@ -13,12 +14,12 @@ const Card = ({ children }) => {
 
 const styles = {
         cardStyle: {
-            marginTop: 15,
-            marginLeft: 15,
-            marginRight: 15,
+            marginTop: Size.margin,
+            marginLeft: Size.margin,
+            marginRight: Size.margin,
             borderRadius: 15,
-            padding: 15,
-            backgroundColor: 'white'
+            padding: Size.padding,
+            backgroundColor: Colors.white
         }
 };
 

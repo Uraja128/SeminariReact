@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import { Colors, Size } from '../constants';
+
 
 const CardItem = () => {
     const {
@@ -25,20 +27,21 @@ const styles = {
         flexDirection: 'row',
         height: 75,
         alignItems: 'center',
-        borderColor: '#dddddd',
+        borderColor: Colors.border,
         borderWidth: 1,
-        marginBottom: 15
+        marginBottom: Size.margin
     },
     imageStyle: {
-        marginLeft: 15,
-        marginRight: 15,
+        marginLeft: Size.margin,
+        marginRight: Size.margin,
         width: 45,
         height: 45
     },
     textStyle: {
-        fontSize: 20,
+        fontSize: Size.t_2_size,
         fontWeight: '800',
-        lineHeight: 20
+        lineHeight: Size.t_2_size,
+        color: Colors.t_1_color
     }
 };
 
