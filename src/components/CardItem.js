@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Colors, Size } from '../constants';
+import Counter from './Counter';
 
 const CardItem = ({ image, text }) => {
     const {
@@ -15,6 +16,7 @@ const CardItem = ({ image, text }) => {
               source={image}
             />
             <Text style={textStyle}>{text}</Text>
+            <Counter />
         </View>
     );
 };
