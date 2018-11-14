@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import Header from './components/Header';
 import Card from './components/Card';
 import CardItem from './components/CardItem';
+import Images from './assets/images';
 
 // creazione componente
 const App = () => {
@@ -12,16 +13,22 @@ const App = () => {
         <View style={appStyle}>
             <Header title="Title" />
             <Card>
-                <CardItem />
-                <CardItem />
-                <CardItem />
-                <CardItem />
-                <CardItem />
-                <CardItem />
-                <CardItem />
-                <CardItem />
-                <CardItem />
-                <CardItem />
+                <CardItem
+                    text="Item 1"
+                    image={Images.cat}
+                />
+                <CardItem
+                    text="Item 2"
+                    image={Images.woman}
+                />
+                <CardItem
+                    text="Item 3"
+                    image={Images.dog}
+                />
+                <CardItem
+                    text="Item 4"
+                    image={Images.plus}
+                />
             </Card>
         </View>
     );

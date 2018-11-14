@@ -1,6 +1,6 @@
 const Size = {
-        margin: 40,
-        padding: 40,
+        margin: 15,
+        padding: 15,
         t_1_size: 26,
         t_2_size: 20
 };

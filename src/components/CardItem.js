@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Colors, Size } from '../constants';
-import Images from '../assets/images';
 
-const CardItem = () => {
+const CardItem = ({ image, text }) => {
     const {
         containerStyle,
         imageStyle,
@@ -13,14 +12,12 @@ const CardItem = () => {
         <View style={containerStyle}>
             <Image
               style={imageStyle}
-              source={Images.plus}
+              source={image}
             />
-            <Text style={textStyle}>text</Text>
+            <Text style={textStyle}>{text}</Text>
         </View>
     );
 };
-
-
 
 const styles = {
     containerStyle: {
