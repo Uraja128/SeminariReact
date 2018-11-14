@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Colors, Size } from '../constants';
-
+import Images from '../assets/images';
 
 const CardItem = () => {
     const {
@@ -13,14 +13,14 @@ const CardItem = () => {
         <View style={containerStyle}>
             <Image
               style={imageStyle}
-              source={{ uri: uriImage }}
+              source={Images.plus}
             />
             <Text style={textStyle}>text</Text>
         </View>
     );
 };
 
-const uriImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==';
+
 
 const styles = {
     containerStyle: {
