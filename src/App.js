@@ -3,8 +3,8 @@ import React from 'react';
 import { View } from 'react-native';
 import Header from './components/Header';
 import Card from './components/Card';
-import CardItem from './components/CardItem';
-import Images from './assets/images';
+import CardList from './components/CardList';
+import CardJson from './assets/json/CardJson';
 
 // creazione componente
 const App = () => {
@@ -13,22 +13,7 @@ const App = () => {
         <View style={appStyle}>
             <Header title="Title" />
             <Card>
-                <CardItem
-                    text="Item 1"
-                    image={Images.cat}
-                />
-                <CardItem
-                    text="Item 2"
-                    image={Images.woman}
-                />
-                <CardItem
-                    text="Item 3"
-                    image={Images.dog}
-                />
-                <CardItem
-                    text="Item 4"
-                    image={Images.plus}
-                />
+                <CardList data={CardJson} />
             </Card>
         </View>
     );
