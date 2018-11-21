@@ -3,8 +3,11 @@ import { Text } from 'react-native';
 
 class Counter extends Component {
 
-    state = {
-        counter: 1
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 1
+        };
     }
 
     componentDidMount() {

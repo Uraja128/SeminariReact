@@ -5,8 +5,11 @@ import Counter from './Counter';
 
 class CardItem extends Component {
 
-    state: {
-        selected: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: false
+        };
     }
 
     onPress = () => {
@@ -20,11 +23,23 @@ class CardItem extends Component {
             imageStyle,
             textStyle
         } = styles;
+
+        const containerTouchStyle =
+            this.state.selected ?
+                {
+                    ...containerStyle,
+                    ...containerStyle.selected
+                } :
+                {
+                    ...containerStyle,
+                    ...containerStyle.notSelected
+                };
+
         return (
             <TouchableWithoutFeedback
                 onPress={() => this.onPress()}
             >
-                <View style={containerStyle}>
+                <View style={containerTouchStyle}>
                     <Image
                       style={imageStyle}
                       source={image}
