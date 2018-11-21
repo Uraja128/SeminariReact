@@ -22,6 +22,8 @@ class CardList extends Component {
             });
     }
 
+    keyExtractor(item) { return item.title; }
+
     renderItem({ item: { title, image } }) {
         return (
                 <CardItem
@@ -35,7 +37,7 @@ class CardList extends Component {
         return (
             <FlatList
                 data={this.state.data}
-                keyExtractor={(_, i) => i}
+                keyExtractor={this.keyExtractor}
                 renderItem={this.renderItem}
             />
         );
