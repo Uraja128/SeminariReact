@@ -1,25 +1,41 @@
-import React from 'react';
-import { View, Text, Image } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import { Colors, Size } from '../constants';
 import Counter from './Counter';
 
-const CardItem = ({ image, text }) => {
-    const {
-        containerStyle,
-        imageStyle,
-        textStyle
-    } = styles;
-    return (
-        <View style={containerStyle}>
-            <Image
-              style={imageStyle}
-              source={image}
-            />
-            <Text style={textStyle}>{text}</Text>
-            <Counter />
-        </View>
-    );
-};
+class CardItem extends Component {
+
+    state: {
+        selected: false
+    }
+
+    onPress = () => {
+        this.setState({ selected: !this.state.selected });
+    }
+
+    render() {
+        const { image, text } = this.props;
+        const {
+            containerStyle,
+            imageStyle,
+            textStyle
+        } = styles;
+        return (
+            <TouchableWithoutFeedback
+                onPress={() => this.onPress()}
+            >
+                <View style={containerStyle}>
+                    <Image
+                      style={imageStyle}
+                      source={image}
+                    />
+                    <Text style={textStyle}>{text}</Text>
+                    <Counter />
+                </View>
+            </TouchableWithoutFeedback>
+        );
+    }
+}
 
 const styles = {
     containerStyle: {
@@ -28,7 +44,13 @@ const styles = {
         alignItems: 'center',
         borderColor: Colors.border,
         borderWidth: 1,
-        marginBottom: Size.margin
+        marginBottom: Size.margin,
+        notSelected: {
+            backgroundColor: Colors.white
+        },
+        selected: {
+            backgroundColor: Colors.bg_floor
+        }
     },
     imageStyle: {
         marginLeft: Size.margin,
