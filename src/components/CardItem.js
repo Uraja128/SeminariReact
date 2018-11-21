@@ -17,9 +17,12 @@ class CardItem extends Component {
     }
 
     render() {
-        const { image, text } = this.props;
+        const { item } = this.props;
+        const { image, title, artist } = item;
         const {
             containerStyle,
+            containerItemStyle,
+            containerDescriptionStyle,
             imageStyle,
             textStyle
         } = styles;
@@ -40,12 +43,27 @@ class CardItem extends Component {
                 onPress={() => this.onPress()}
             >
                 <View style={containerTouchStyle}>
-                    <Image
-                      style={imageStyle}
-                      source={image}
-                    />
-                    <Text style={textStyle}>{text}</Text>
-                    <Counter />
+                    <View style={containerItemStyle}>
+                        <Image
+                          style={imageStyle}
+                          source={{ uri: image }}
+                        />
+                        <Text style={textStyle}>{title}</Text>
+                        <Counter />
+                    </View>
+                    { this.state.selected &&
+                        <View>
+                            <View
+                                style={{
+                                     height: 1,
+                                     backgroundColor: Colors.black
+                                 }}
+                            />
+                            <Text
+                                style={containerDescriptionStyle}
+                            >Artist: {artist}</Text>
+                        </View>
+                    }
                 </View>
             </TouchableWithoutFeedback>
         );
@@ -54,9 +72,6 @@ class CardItem extends Component {
 
 const styles = {
     containerStyle: {
-        flexDirection: 'row',
-        height: 75,
-        alignItems: 'center',
         borderColor: Colors.border,
         borderWidth: 1,
         marginBottom: Size.margin,
@@ -66,6 +81,14 @@ const styles = {
         selected: {
             backgroundColor: Colors.bg_floor
         }
+    },
+    containerItemStyle: {
+            flexDirection: 'row',
+            height: 75,
+            alignItems: 'center',
+    },
+    containerDescriptionStyle: {
+        padding: Size.padding,
     },
     imageStyle: {
         marginLeft: Size.margin,

@@ -24,12 +24,9 @@ class CardList extends Component {
 
     keyExtractor(item) { return item.title; }
 
-    renderItem({ item: { title, image } }) {
+    renderItem({ item }) {
         return (
-                <CardItem
-                    text={title}
-                    image={{ uri: image }}
-                />
+                <CardItem item={item} />
             );
     }
 
