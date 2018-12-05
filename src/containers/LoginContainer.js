@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import LoginScreen from '../screen/LoginScreen';
+import { setPrivacyAuth } from '../actions';
 
 const mapStateToProps = (state) => {
     const { auth } = state;
@@ -8,6 +9,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = () => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default connect(mapStateToProps, { setPrivacyAuth })(LoginScreen);

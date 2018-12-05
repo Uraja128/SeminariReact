@@ -11,7 +11,7 @@ const AuthenticationReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 privacy: {
                     ...state.privacy,
-                    checked: true
+                    checked: action.payload
                 }
             };
             default:
