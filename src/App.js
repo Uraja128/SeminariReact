@@ -1,6 +1,8 @@
 // import componenti
 import React from 'react';
+import { Provider } from 'react-redux';
 import { View } from 'react-native';
+import { store } from './Store';
 import Header from './components/Header';
 import Card from './components/Card';
 import CardList from './components/CardList';
@@ -10,12 +12,14 @@ import CardJson from './assets/json/CardJson';
 const App = () => {
     const { appStyle } = styles;
     return (
-        <View style={appStyle}>
-            <Header title="Title" />
-            <Card>
-                <CardList data={CardJson} />
-            </Card>
-        </View>
+        <Provider store={store}>
+            <View style={appStyle}>
+                <Header title="Title" />
+                <Card>
+                    <CardList data={CardJson} />
+                </Card>
+            </View>
+        </Provider>
     );
 };
 
