@@ -6,4 +6,11 @@ const setPrivacyAuth = (privacyState) => {
     };
 };
 
-export { setPrivacyAuth };
+const loginEmailChange = (email) => {
+    return {
+        type: 'LOGIN_EMAIL_CHANGE',
+        payload: email
+    };
+};
+
+export { setPrivacyAuth, loginEmailChange };

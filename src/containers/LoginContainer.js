@@ -1,12 +1,22 @@
 import { connect } from 'react-redux';
 import LoginScreen from '../screen/LoginScreen';
-import { setPrivacyAuth } from '../actions';
+import {
+    setPrivacyAuth,
+    loginEmailChange
+ } from '../actions';
 
 const mapStateToProps = (state) => {
-    const { auth } = state;
+    const { auth: { privacy, login: { email, password } } } = state;
     return {
-        auth
+        privacy,
+        email,
+        password
     };
 };
 
-export default connect(mapStateToProps, { setPrivacyAuth })(LoginScreen);
+const mapDispatchToProps = () => ({
+    setPrivacyAuth,
+    loginEmailChange
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
