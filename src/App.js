@@ -7,7 +7,7 @@ import Header from './components/Header';
 //import Card from './components/Card';
 //import CardList from './components/CardList';
 //import CardJson from './assets/json/CardJson';
-import LoginContainer from './containers/LoginContainer';
+import Router from './containers/RouterContainer';
 
 // creazione componente
 const App = () => {
@@ -15,8 +15,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <View style={appStyle}>
-                <Header title="Title" />
-                <LoginContainer />
+                <Router />
             </View>
         </Provider>
     );
