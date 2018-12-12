@@ -1,3 +1,5 @@
+import { LOGIN_PARAM_CHANGE, CHECK_PRIVACY } from '../constants/ActionTypes';
+
 const INITIAL_STATE = {
     privacy: {
         checked: false
@@ -10,7 +12,7 @@ const INITIAL_STATE = {
 
 const AuthenticationReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'LOGIN_PARAM_CHANGE':
+        case LOGIN_PARAM_CHANGE:
             return {
                 ...state,
                 login: {
@@ -18,15 +20,7 @@ const AuthenticationReducer = (state = INITIAL_STATE, action) => {
                     [action.payload.key]: action.payload.value
                 }
             };
-        case 'LOGIN_EMAIL_CHANGE':
-            return {
-                ...state,
-                login: {
-                    ...state.login,
-                    email: action.payload
-                }
-            };
-        case 'CHECK_PRIVACY':
+        case CHECK_PRIVACY:
             return {
                 ...state,
                 privacy: {

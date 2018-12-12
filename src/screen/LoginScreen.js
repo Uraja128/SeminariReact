@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import {
+    FormLabel,
+    FormInput,
+    FormValidationMessage,
+    CheckBox
+} from 'react-native-elements';
 
 class LoginScreen extends Component {
 
-    textPressed() {
+    pressCheckbox() {
         const { setPrivacyAuth } = this.props;
         setPrivacyAuth(!this.props.privacy.checked);
     }
 
-    changeEmailText(email) {
-        const { loginEmailChange } = this.props;
-        loginEmailChange(email);
-    }
     changeValueText(key, value) {
         const { loginParamChange } = this.props;
         loginParamChange(key, value);
@@ -45,20 +46,13 @@ class LoginScreen extends Component {
                     {false &&
                     <FormValidationMessage>Error message</FormValidationMessage>
                     }
-                </View>
 
-                <TouchableWithoutFeedback
-                    onPress={() => { this.textPressed(); }}
-                >
-                  <Text>
-                  {(privacy.checked) &&
-                      'Settato'
-                  }
-                  {(!privacy.checked) &&
-                      'Non Settato'
-                  }
-                  </Text>
-              </TouchableWithoutFeedback>
+                    <CheckBox
+                        title='Accetta la privacy'
+                        checked={privacy.checked}
+                        onPress={() => this.pressCheckbox()}
+                    />
+                </View>
             </View>
         );
     }

@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import LoginScreen from '../screen/LoginScreen';
 import {
     setPrivacyAuth,
-    loginEmailChange,
     loginParamChange
  } from '../actions';
 
@@ -24,12 +23,10 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(setPrivacyAuth);
             }, 2000);
         },
-        onChangeText: loginEmailChange
     };
 };
 
 export default connect(mapStateToProps, {
     setPrivacyAuth,
-    loginEmailChange,
     loginParamChange
 })(LoginScreen);
