@@ -13,21 +13,37 @@ class LoginScreen extends Component {
         const { loginEmailChange } = this.props;
         loginEmailChange(email);
     }
+    changeValueText(key, value) {
+        const { loginParamChange } = this.props;
+        loginParamChange(key, value);
+    }
 
     render() {
-        const { email, privacy } = this.props;
+        const { email, password, privacy } = this.props;
         return (
             <View>
                 <View>
                     <FormLabel>Email</FormLabel>
                     <FormInput
                         value={email}
-                        onTextChange={(value) => { this.changeEmailText(value); }}
+                        onChangeText={(value) => { this.changeValueText('email', value); }}
                         placeholder={'ciao@gmail.com'}
                         autoCorrect={false}
                     />
                     {false &&
                         <FormValidationMessage>Error message</FormValidationMessage>
+                    }
+
+                    <FormLabel>Password</FormLabel>
+                    <FormInput
+                        value={password}
+                        secureTextEntry
+                        onChangeText={(value) => { this.changeValueText('password', value); }}
+                        placeholder={'password'}
+                        autoCorrect={false}
+                    />
+                    {false &&
+                    <FormValidationMessage>Error message</FormValidationMessage>
                     }
                 </View>
 

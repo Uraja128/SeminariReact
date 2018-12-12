@@ -10,6 +10,14 @@ const INITIAL_STATE = {
 
 const AuthenticationReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case 'LOGIN_PARAM_CHANGE':
+            return {
+                ...state,
+                login: {
+                    ...state.login,
+                    [action.payload.key]: action.payload.value
+                }
+            };
         case 'LOGIN_EMAIL_CHANGE':
             return {
                 ...state,

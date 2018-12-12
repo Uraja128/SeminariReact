@@ -13,4 +13,16 @@ const loginEmailChange = (email) => {
     };
 };
 
-export { setPrivacyAuth, loginEmailChange };
+const loginParamChange = (key, value) => {
+    return {
+        type: 'LOGIN_PARAM_CHANGE',
+        payload: {
+            key,
+            value
+        }
+    };
+};
+
+
+
+export { setPrivacyAuth, loginEmailChange, loginParamChange };
