@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { View } from 'react-native';
 import {
     FormLabel,
     FormInput,
     FormValidationMessage,
-    CheckBox
+    CheckBox,
+    Button
 } from 'react-native-elements';
 
 class LoginScreen extends Component {
@@ -19,8 +20,13 @@ class LoginScreen extends Component {
         loginParamChange(key, value);
     }
 
+    login() {
+        const { login } = this.props;
+        login();
+    }
+
     render() {
-        const { email, password, privacy } = this.props;
+        const { email, password, error, loading, privacy } = this.props;
         return (
             <View>
                 <View>
@@ -31,9 +37,6 @@ class LoginScreen extends Component {
                         placeholder={'ciao@gmail.com'}
                         autoCorrect={false}
                     />
-                    {false &&
-                        <FormValidationMessage>Error message</FormValidationMessage>
-                    }
 
                     <FormLabel>Password</FormLabel>
                     <FormInput
@@ -43,14 +46,22 @@ class LoginScreen extends Component {
                         placeholder={'password'}
                         autoCorrect={false}
                     />
-                    {false &&
-                    <FormValidationMessage>Error message</FormValidationMessage>
-                    }
 
                     <CheckBox
                         title='Accetta la privacy'
                         checked={privacy.checked}
                         onPress={() => this.pressCheckbox()}
+                    />
+
+
+                    {error !== '' &&
+                    <FormValidationMessage>{error}</FormValidationMessage>
+                    }
+
+                    <Button
+                        title='Login'
+                        onPress={() => { this.login(); }}
+                        loading={loading}
                     />
                 </View>
             </View>

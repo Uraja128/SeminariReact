@@ -1,4 +1,10 @@
-import { CHECK_PRIVACY, LOGIN_PARAM_CHANGE } from '../constants/ActionTypes';
+import {
+    CHECK_PRIVACY,
+    LOGIN_PARAM_CHANGE,
+    LOGIN_FETCH,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL
+} from '../constants/ActionTypes';
 
 const setPrivacyAuth = (privacyState) => {
     console.warn(privacyState);
@@ -18,4 +24,21 @@ const loginParamChange = (key, value) => {
     };
 };
 
-export { setPrivacyAuth, loginParamChange };
+const login = () => {
+    return {
+        type: LOGIN_FETCH
+    };
+};
+
+const loginSuccess = () => {
+    return {
+        type: LOGIN_SUCCESS
+    };
+};
+const loginFail = () => {
+    return {
+        type: LOGIN_FAIL
+    };
+};
+
+export { setPrivacyAuth, loginParamChange, login, loginSuccess, loginFail };

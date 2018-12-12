@@ -1,4 +1,4 @@
-import { PAGE_BACK, PAGE_CHANGE } from '../constants/ActionTypes';
+import { LOGIN_SUCCESS, PAGE_BACK, PAGE_CHANGE } from '../constants/ActionTypes';
 
 const INITIAL_STATE = {
     stack: [],
@@ -30,6 +30,8 @@ export default (state = INITIAL_STATE, action) => {
             return pageChange(state, action.payload.page);
         case PAGE_BACK:
             return pageBack(state);
+        case LOGIN_SUCCESS:
+            return pageChange(state, 'list');
         default:
             return state;
     }
