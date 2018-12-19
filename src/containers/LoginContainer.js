@@ -66,11 +66,9 @@ export default connect(mapStateToProps, {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
-                console.log('then');
-                // dispatch(loginSuccess())
+                dispatch(loginSuccess())
             })
             .catch(({ code, message }) => {
-                console.log('catch', code, message);
                 dispatch(loginFail(message));
             });
     }
