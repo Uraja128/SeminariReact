@@ -2,11 +2,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { View } from 'react-native';
-import { store } from './Store';
-import Header from './components/Header';
-//import Card from './components/Card';
-//import CardList from './components/CardList';
-//import CardJson from './assets/json/CardJson';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './Store';
 import Router from './containers/RouterContainer';
 
 // creazione componente
@@ -14,9 +11,11 @@ const App = () => {
     const { appStyle } = styles;
     return (
         <Provider store={store}>
-            <View style={appStyle}>
-                <Router />
-            </View>
+            <PersistGate persistor={persistor}>
+                <View style={appStyle}>
+                    <Router />
+                </View>
+            </PersistGate>
         </Provider>
     );
 };
