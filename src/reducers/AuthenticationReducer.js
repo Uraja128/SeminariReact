@@ -54,7 +54,7 @@ const AuthenticationReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 login: {
                     ...state.login,
-                    error: 'credenziali errate',
+                    error: action.payload.message,
                     loading: false
                 }
             };

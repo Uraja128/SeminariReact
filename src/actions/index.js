@@ -35,9 +35,12 @@ const loginSuccess = () => {
         type: LOGIN_SUCCESS
     };
 };
-const loginFail = () => {
+const loginFail = (message="Invalid Credential") => {
     return {
-        type: LOGIN_FAIL
+        type: LOGIN_FAIL,
+        payload: {
+            message
+        }
     };
 };
 

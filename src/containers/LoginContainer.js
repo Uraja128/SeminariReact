@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import firebase from 'firebase';
 import LoginScreen from '../screen/LoginScreen';
 import {
     setPrivacyAuth,
@@ -62,13 +63,15 @@ export default connect(mapStateToProps, {
             email,
             password
         } = getLoginFS(getState());
-        setTimeout(() => {
-            if (email === 'admin@gmail.com' &&
-                password === 'pippo') {
-                dispatch(loginSuccess())
-            } else {
-                dispatch(loginFail());
-            }
-        }, 2000);
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+                console.log('then');
+                // dispatch(loginSuccess())
+            })
+            .catch(({ code, message }) => {
+                console.log('catch', code, message);
+                dispatch(loginFail(message));
+            });
     }
 })(LoginScreen);
