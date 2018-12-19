@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import {
-    FormLabel,
-    FormInput,
-    FormValidationMessage,
+    Input,
     CheckBox,
     Button
 } from 'react-native-elements';
@@ -27,45 +25,51 @@ class LoginScreen extends Component {
 
     render() {
         const { email, password, error, loading, privacy } = this.props;
+        const { containerStyle } = styles;
         return (
-            <View>
-                <View>
-                    <FormLabel>Email</FormLabel>
-                    <FormInput
-                        value={email}
-                        onChangeText={(value) => { this.changeValueText('email', value); }}
-                        placeholder={'ciao@gmail.com'}
-                        autoCorrect={false}
-                    />
-
-                    <FormLabel>Password</FormLabel>
-                    <FormInput
-                        value={password}
-                        secureTextEntry
-                        onChangeText={(value) => { this.changeValueText('password', value); }}
-                        placeholder={'password'}
-                        autoCorrect={false}
-                    />
-
-                    <CheckBox
-                        title='Accetta la privacy'
-                        checked={privacy.checked}
-                        onPress={() => this.pressCheckbox()}
-                    />
-
-
-                    {error !== '' &&
-                    <FormValidationMessage>{error}</FormValidationMessage>
-                    }
-
-                    <Button
-                        title='Login'
-                        onPress={() => { this.login(); }}
-                        loading={loading}
-                    />
-                </View>
+            <View style={containerStyle}>
+                <Input
+                    value={email}
+                    placeholder={'Email'}
+                    onChangeText={(value) => { this.changeValueText('email', value); }}
+                    leftIcon={{ type: 'font-awesome', name: 'envelope' }}
+                    autoCorrect={false}
+                    style={{ marginBottom: 15 }}
+                    autoCapitalize={'none'}
+                />
+                <Input
+                    value={password}
+                    placeholder={'Password'}
+                    onChangeText={(value) => { this.changeValueText('password', value); }}
+                    leftIcon={{ type: 'font-awesome', name: 'unlock' }}
+                    autoCorrect={false}
+                    secureTextEntry
+                    style={{ marginBottom: 15 }}
+                    autoCapitalize={'none'}
+                />
+                <CheckBox
+                    title='Accetta la privacy'
+                    checked={privacy.checked}
+                    onPress={() => this.pressCheckbox()}
+                    style={{ marginBottom: 15 }}
+                />
+                <Text>{error}</Text>
+                <Button
+                    title='Login'
+                    onPress={() => { this.login(); }}
+                    loading={loading}
+                />
             </View>
         );
+    }
+}
+
+const styles = {
+    containerStyle: {
+        flex: 1,
+        justifyContent: 'center',
+        alingItems: 'center',
+        paddingHorizontal: 30,
     }
 }
 

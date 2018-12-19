@@ -5,12 +5,16 @@ import {
     loginParamChange,
     login, loginSuccess, loginFail
 } from '../actions';
+import { getLoginFS, getPrivacyFS } from '../selectors';
 
 const mapStateToProps = (state) => {
-    const { auth: { privacy, login: {
-        email, password,
-        loading, error
-    } } } = state;
+    const {
+        email,
+        password,
+        loading,
+        error
+    } = getLoginFS(state);
+    const privacy = getPrivacyFS(state);
     return {
         privacy,
         email,
@@ -37,7 +41,7 @@ const mapDispatchToProps = (dispatch, getState) => {
             }, 1000);
             return;
             const state = getState();
-            const { email, password } = state.user.login;
+            const { email, password } = state.auth.login;
             setTimeout(() => {
                 if (email === 'admin@gmail.com' && password === 'pippo') {
                     dispatch(loginSuccess());
@@ -49,4 +53,22 @@ const mapDispatchToProps = (dispatch, getState) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default connect(mapStateToProps, {
+    setPrivacyAuth,
+    loginParamChange,
+    login: () => (dispatch, getState) => {
+        dispatch(login());
+        const {
+            email,
+            password
+        } = getLoginFS(getState());
+        setTimeout(() => {
+            if (email === 'admin@gmail.com' &&
+                password === 'pippo') {
+                dispatch(loginSuccess())
+            } else {
+                dispatch(loginFail());
+            }
+        }, 2000);
+    }
+})(LoginScreen);

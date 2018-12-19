@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import LoginContainer from './LoginContainer';
 import ListContainer from './ListContainer';
 
 const RouterManager = ({ current }) => {
     return (
-        <View>
+        <SafeAreaView style={{ flex: 1 }}>
             {current === 'login' && <LoginContainer />}
             {current === 'list' && <ListContainer />}
-        </View>
+        </SafeAreaView>
     );
 };
 

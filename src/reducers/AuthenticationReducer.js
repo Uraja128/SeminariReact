@@ -35,6 +35,7 @@ const AuthenticationReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 login: {
                     ...state.login,
+                    error: '',
                     loading: true
                 }
             };
