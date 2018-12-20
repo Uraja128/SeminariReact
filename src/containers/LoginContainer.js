@@ -24,7 +24,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-// esempio
 const mapDispatchToProps = (dispatch) => {
     return {
         setPrivacyAuth,
