@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import firebase from 'firebase';
 import LoginScreen from '../screen/LoginScreen';
 import {
     setPrivacyAuth,
     loginParamChange,
-    login, loginSuccess, loginFail
+    login, loginFetch
 } from '../actions';
 import { getLoginFS, getPrivacyFS } from '../selectors';
 
@@ -26,50 +25,15 @@ const mapStateToProps = (state) => {
 };
 
 // esempio
-const mapDispatchToProps = (dispatch, getState) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        setPrivacyAuth: () => {
-            dispatch(setPrivacyAuth());
-        },
-        loginParamChange: () => {
-            dispatch(loginParamChange());
-        },
+        setPrivacyAuth,
+        loginParamChange,
         login: () => {
             dispatch(login());
-            setTimeout(() => {
-                dispatch(loginSuccess());
-                //dispatch(loginFail());
-            }, 1000);
-            return;
-            const state = getState();
-            const { email, password } = state.auth.login;
-            setTimeout(() => {
-                if (email === 'admin@gmail.com' && password === 'pippo') {
-                    dispatch(loginSuccess());
-                } else {
-                    dispatch(loginFail());
-                }
-            }, 1000);
-        },
+            dispatch(loginFetch())
+        }
     };
 };
 
-export default connect(mapStateToProps, {
-    setPrivacyAuth,
-    loginParamChange,
-    login: () => (dispatch, getState) => {
-        dispatch(login());
-        const {
-            email,
-            password
-        } = getLoginFS(getState());
-
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(() => {
-                dispatch(loginSuccess())
-            })
-            .catch(({ code, message }) => {
-                dispatch(loginFail(message));
-            });
-    }
-})(LoginScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
